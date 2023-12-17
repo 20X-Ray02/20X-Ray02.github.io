@@ -41,3 +41,24 @@ $('.tab a').on('click', function (e) {
   $(target).fadeIn(600);
   
 });
+
+
+function FindAll() {
+  fetch('https://jsonplaceholder.typicode.com/posts')
+    .then((response) => response.json())
+    .then((json) => {
+        document.getElementById("text_test").innerText = "";
+        json.forEach((element) => {
+            document.getElementById("text_test").append(element.body);
+        })
+    });
+}
+
+function FindById() {
+  const input = document.getElementById("name").value;
+  fetch('https://jsonplaceholder.typicode.com/posts/' + input)
+    .then((response) => response.json())
+    .then((json) => {
+        document.getElementById("text_test").innerText = json.body
+    });
+}
